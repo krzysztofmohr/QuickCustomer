@@ -27,7 +27,17 @@ export class InvoiceFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute) {
 
-    }
+    this.invoiceForm = this.formBuilder.group({
+      id: [''],
+      service: ['', Validators.required],
+      customerId: ['', Validators.required],
+      rate: ['', Validators.required],
+      hours: ['', Validators.required],
+      date: ['', Validators.required],
+      paid: ['']
+    });
+
+  }
 
   ngOnInit() {
     this.loadingService.register('invoice');
@@ -41,6 +51,7 @@ export class InvoiceFormComponent implements OnInit {
     this.route.params.map((params: Params) => params.invoiceId).subscribe(invoiceId => {
       if (invoiceId) {
         this.invoicesService.get<Invoice>(invoiceId).subscribe(invoice => {
+          this.invoiceForm.setValue(invoice);
           this.invoice = invoice;
           this.loadingService.resolve('invoice');
         });
