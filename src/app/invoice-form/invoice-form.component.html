@@ -1,29 +1,30 @@
 <div *tdLoading="'invoice'">
-  <form *ngIf="invoice">
+  <form *ngIf="invoice" [formGroup]="invoiceForm">
     <md-card>
       <md-card-header>Edit Invoice</md-card-header>
       <md-card-content>
         <md-input-container>
-          <input name="service" mdInput type="text" placeholder="Service">
+          <input name="service" mdInput type="text" placeholder="Service" formControlName="service">
+          <md-error></md-error>
         </md-input-container>
         <md-input-container>
           <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
-          <button type="button" mdSuffix [mdDatepickerToggle]="picker"></button>
+          <button type="button" mdSuffix [mdDatepickerToggle]="picker" formControlName="date"></button>
         </md-input-container>
         <md-datepicker #picker></md-datepicker>
         <md-input-container>
-          <input name="hours" mdInput type="number" placeholder="Hours">
+          <input name="hours" mdInput type="number" placeholder="Hours" formControlName="hours">
         </md-input-container>
         <md-input-container>
-          <input name="rate" mdInput type="number" placeholder="Rate">
+          <input name="rate" mdInput type="number" placeholder="Rate" formControlName="rate">
         </md-input-container>
         <div>
-          <md-select name="customerId" placeholder="Customer">
+          <md-select name="customerId" placeholder="Customer" formControlName="customerId">
             <md-option [value]="customer.id" *ngFor="let customer of customers">{{customer?.name}}</md-option>
           </md-select>
         </div>
         <div class="toggler">
-          <md-slide-toggle>Paid</md-slide-toggle>
+          <md-slide-toggle formControlName="paid">Paid</md-slide-toggle>
         </div>
         <div class="total">
           Total: {{total | currency:'USD':true:'.2'}}

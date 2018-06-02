@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InvoicesService, Invoice, CustomersService, Customer } from '@aia/services';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
+import {HoursValidator} from "../validators/hours.validator";
 
 @Component({
   selector: 'app-invoice-form',
@@ -32,7 +33,7 @@ export class InvoiceFormComponent implements OnInit {
       service: ['', Validators.required],
       customerId: ['', Validators.required],
       rate: ['', Validators.required],
-      hours: ['', Validators.required],
+      hours: ['', [Validators.required, HoursValidator]],
       date: ['', Validators.required],
       paid: ['']
     });
@@ -60,6 +61,14 @@ export class InvoiceFormComponent implements OnInit {
         this.loadingService.resolve('invoice');
       }
     });
+
+    Observable.combineLatest(
+      this.invoiceForm.get('rate').valueChanges,
+      this.invoiceForm.get('hours').valueChanges
+    ).subscribe(([rate = 0, hours = 0]) => {
+      this.total = rate * hours;
+    })
+
   }
 
   save() {
