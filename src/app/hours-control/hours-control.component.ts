@@ -26,6 +26,7 @@ export class HoursControlComponent implements ControlValueAccessor {
   }
 
   keypress($event) {
+    console.log($event);
     if ($event.key === 'ArrowUp') {
       this.setValue(.25);
     } else if ($event.key === 'ArrowDown') {
