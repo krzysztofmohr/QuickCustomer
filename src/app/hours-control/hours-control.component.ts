@@ -26,7 +26,6 @@ export class HoursControlComponent implements ControlValueAccessor {
   }
 
   keypress($event) {
-    console.log($event);
     if ($event.key === 'ArrowUp') {
       this.setValue(.25);
     } else if ($event.key === 'ArrowDown') {
@@ -55,3 +54,14 @@ export class HoursControlComponent implements ControlValueAccessor {
 
   registerOnTouched() {}
 }
+
+// Declares providers
+// ControlValueAccessor interface is used by all form controls
+// Properties to house the value, validation function, and change event
+// Changes binding to update the form control
+// Event handler for key press
+// Method to set value from button clicks
+// Validation handler
+// Handles writing a value into the control
+// Wires up change handler
+// Empty method to satisfy interface
