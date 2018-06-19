@@ -13,10 +13,7 @@
           <md-error *ngIf="invoiceForm.get('date').touched && invoiceForm.get('date').invalid"></md-error>
         </md-input-container>
         <md-datepicker #picker></md-datepicker>
-        <md-input-container>
-          <input name="hours" mdInput type="number" placeholder="Hours" formControlName="hours">
-          <md-error *ngIf="invoiceForm.get('hours').touched && invoiceForm.get('hours').invalid"></md-error>
-        </md-input-container>
+        <app-hours-control formControlName="hours"></app-hours-control>
         <md-input-container>
           <input name="rate" mdInput type="number" placeholder="Rate" formControlName="rate">
           <md-error *ngIf="invoiceForm.get('rate').touched && invoiceForm.get('rate').invalid"></md-error>
