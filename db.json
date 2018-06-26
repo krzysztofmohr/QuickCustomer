@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Linklinks",
-      "email": "mscoon0@hibu.com",
+      "email": "",
       "phone": "(970)426-1402"
     },
     {
@@ -118,20 +118,20 @@
   "invoices": [
     {
       "id": 3,
+      "service": "Performance Management2",
       "customerId": 11,
-      "date": "2017-03-19T09:59:46Z",
-      "service": "Performance Management",
-      "hours": 50,
       "rate": 50,
-      "paid": false
+      "hours": 50,
+      "date": "2017-03-19T09:59:46Z",
+      "paid": true
     },
     {
       "id": 4,
-      "customerId": 8,
-      "date": "2016-12-08T05:48:44Z",
       "service": "Publications",
-      "hours": 69,
+      "customerId": 7,
       "rate": 75,
+      "hours": 69,
+      "date": "2016-12-08T05:48:44Z",
       "paid": false
     },
     {
